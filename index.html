@@ -266,6 +266,12 @@
         for (const msg of msgs) {
           await game.openDialog(msg);
         }
+        
+        if (score > bestScore) {
+          await game.openDialog(
+            `Your new best score is <8>${score}<8>, from previous <8>${bestScore}<8> points.`
+          );
+        }
 
         for (let i = 0; i < 3; i++) {
           game.setCell(1, i, {
@@ -337,9 +343,6 @@
       let bestScore = +(localStorage.getItem("score") || "0");
       async function showTitleScreen() {
         if (score > bestScore) {
-          await game.openDialog(
-            `Your new best score is <8>${score}<8>, from previous <8>${bestScore}<8> points.`
-          );
           bestScore = score;
           localStorage.setItem("score", `${bestScore}`);
         }
