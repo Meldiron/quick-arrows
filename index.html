@@ -84,8 +84,13 @@
           COLOR_NEXT,
         ];
         const hardColors = [COLOR_SAME, COLOR_OPPOSITE, COLOR_NEXT];
-        const colors =
+        let colors =
           score < 30 ? easyColors : score < 40 ? mediumColors : hardColors;
+        
+        const hasGreen = arrows.find((arrow) => arrow.color === COLOR_NEXT);
+        if(hasGreen) {
+          colors = colors.filter((color) => color !== COLOR_NEXT);
+        }
 
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
@@ -133,7 +138,21 @@
           if (!nextArrow) {
             throw new Error("No next arrow found");
           }
-          return nextArrow.direction;
+          
+          if(nextArrow.color === COLOR_SAME) {
+            return nextArrow.direction;
+          } else if (nextArrow.color === COLOR_OPPOSITE) {
+            switch (nextArrow.direction) {
+              case "up":
+                return "down";
+              case "down":
+                return "up";
+              case "left":
+                return "right";
+              case "right":
+                return "left";
+            }
+          }
         } else {
           throw new Error("Unknown color: " + arrow.color);
         }
@@ -313,18 +332,18 @@
                 ? 150
                 : score < 20
                   ? 100
-                  : score < 100
+                  : score < 80
                     ? 70
                     : null;
         if (timerSpeed === null) {
           timerSpeed =
-            score < 200
+            score < 150
               ? 60
-              : score < 300
+              : score < 200
                 ? 50
-                : score < 400
+                : score < 250
                   ? 40
-                  : score < 500
+                  : score < 300
                     ? 30
                     : 20;
         }
