@@ -167,8 +167,29 @@
         cellHeight: 7,
         screenWidth: 3,
         screenHeight: 3,
+        colors: [
+          "#212529",
+          "#f8f9fa",
+          "#ced4da",
+          "#228be6",
+          "#fa5252",
+          "#fcc419",
+          "#ff922b",
+          "#40c057",
+          "#f06595",
+          "#a52f01",
+          "#40434a",
+        ],
         player: {
-          sprite: ``,
+          sprite: `
+            aa...aa
+            a.....a
+            .......
+            .......
+            .......
+            a.....a
+            aa...aa
+          `,
           position: [1, 1],
         },
         templates: {
@@ -266,7 +287,7 @@
         for (const msg of msgs) {
           await game.openDialog(msg);
         }
-        
+
         if (score > bestScore) {
           await game.openDialog(
             `Your new best score is <8>${score}<8>, from previous <8>${bestScore}<8> points.`
