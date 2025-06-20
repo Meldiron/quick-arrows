@@ -1,24 +1,5 @@
-// TODO: Move most of it to utils/arrows.js
-
-const COLOR_SAME = "3";
-const COLOR_OPPOSITE = "5";
-const COLOR_NEXT = "7";
-
-const easyColors = [
-  ...Array(8).fill(COLOR_SAME),
-  ...Array(4).fill(COLOR_OPPOSITE),
-  COLOR_NEXT,
-];
-const mediumColors = [
-  ...Array(5).fill(COLOR_SAME),
-  ...Array(2).fill(COLOR_OPPOSITE),
-  COLOR_NEXT,
-];
-const hardColors = [COLOR_SAME, COLOR_OPPOSITE, COLOR_NEXT];
-
 function openGameScene() {
   let score = 0;
-  let arrows = []; // lowest on screen = in array first
 
   const scene = odyc.createGame({
     dialogInternvalMs: 15,
@@ -80,12 +61,13 @@ function openGameScene() {
             alert("Wrong direction");
           }
 
-          const correctAnswer = getCorrectAnswer(arrows[0]);
+          const correctAnswer = arrows.getDirection(arrows.list[0]);
 
           if (direction === correctAnswer) {
-            arrows.shift();
-            renderArrows();
             score++;
+
+            arrows.list.shift();
+            arrows.render(scene, score);
             timer.start(score);
           } else {
             gameOver([
@@ -98,80 +80,6 @@ function openGameScene() {
     },
   });
 
-  function renderArrows() {
-    while (arrows.length < 2) {
-      arrows.push(createRandomArrow());
-    }
-    let i = 0;
-    for (const arrow of arrows) {
-      scene.setCell(1, 1 - i, arrow);
-      i++;
-    }
-  }
-
-  function createRandomArrow() {
-    const directions = ["up", "down", "left", "right"];
-    const randomDirection =
-      directions[Math.floor(Math.random() * directions.length)];
-
-    let colors =
-      score < 5 ? easyColors : score < 10 ? mediumColors : hardColors;
-
-    const hasGreen = arrows.find((arrow) => arrow.color === COLOR_NEXT);
-    if (hasGreen) {
-      colors = colors.filter((color) => color !== COLOR_NEXT);
-    }
-
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-    let sprite = gameConfig.sprites[randomDirection];
-
-    return {
-      direction: randomDirection,
-      color: randomColor,
-      sprite: sprite.split("x").join(randomColor),
-    };
-  }
-
-  function getCorrectAnswer(arrow) {
-    if (arrow.color === COLOR_SAME) {
-      return arrow.direction;
-    } else if (arrow.color === COLOR_OPPOSITE) {
-      switch (arrow.direction) {
-        case "up":
-          return "down";
-        case "down":
-          return "up";
-        case "left":
-          return "right";
-        case "right":
-          return "left";
-      }
-    } else if (arrow.color === COLOR_NEXT) {
-      const nextArrow = arrows[arrows.indexOf(arrow) + 1];
-      if (!nextArrow) {
-        throw new Error("No next arrow found");
-      }
-
-      if (nextArrow.color === COLOR_SAME) {
-        return nextArrow.direction;
-      } else if (nextArrow.color === COLOR_OPPOSITE) {
-        switch (nextArrow.direction) {
-          case "up":
-            return "down";
-          case "down":
-            return "up";
-          case "left":
-            return "right";
-          case "right":
-            return "left";
-        }
-      }
-    } else {
-      throw new Error("Unknown color: " + arrow.color);
-    }
-  }
-
   const timer = new Timer(scene);
   timer.onFinish = () => {
     gameOver([
@@ -179,6 +87,9 @@ function openGameScene() {
     ]);
   };
   timer.start(score);
+
+  const arrows = new Arrows();
+  arrows.render(scene, score);
 
   async function gameOver(msgs) {
     timer.end();
@@ -201,6 +112,4 @@ function openGameScene() {
 
     openMenuScene();
   }
-
-  renderArrows();
 }
