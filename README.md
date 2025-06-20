@@ -6,6 +6,14 @@ Quick Arrows is an engaging brain training game that tests your ability to quick
 
 🎮 **[Play Online](https://quick-arrows.appwrite.network/)**
 
+## 🎯 Game Concept
+
+- **Progressive Difficulty**: Game becomes more challenging as you improve
+- **High Score Tracking**: Your best score is saved locally
+- **Responsive Design**: Works on both desktop and mobile devices
+- **Visual Timer**: Color-coded timer bar shows remaining time
+- **Clear Instructions**: Built-in tutorial explains all game mechanics
+
 ## 🧠 How to Play
 
 The goal is simple: respond to arrows by pressing the correct direction key (WASD) or swiping on mobile devices. But here's the twist - the color of the arrow determines what action you need to take:
@@ -21,7 +29,7 @@ The goal is simple: respond to arrows by pressing the correct direction key (WAS
 - **Desktop**: Use WASD keys (W=Up, A=Left, S=Down, D=Right)
 - **Mobile**: Swipe in the correct direction
 
-## 🎯 Scoring & Difficulty
+## 🏆 Difficulty Levels
 
 - Each correct response earns you 1 point
 - The game starts easy but gets progressively harder as your score increases
@@ -29,19 +37,20 @@ The goal is simple: respond to arrows by pressing the correct direction key (WAS
 - Arrow color distribution becomes more challenging over time
 - **Score of 100+ is considered excellent performance**
 
-### Difficulty Progression
+## 🧠 Memory Training Benefits
 
-- **Score 0-4**: Mostly blue arrows with some orange
-- **Score 5-9**: Moderate mix of blue, orange, and occasional green
-- **Score 10+**: Equal distribution of all arrow types with faster timing
+Forest Hike helps improve:
+- **Spatial Memory**: Remembering layouts and paths
+- **Visual Memory**: Recalling map details and landmarks
+- **Working Memory**: Holding information while navigating
+- **Attention to Detail**: Noticing important path markers
+- **Sequential Memory**: Remembering the order of turns and directions
 
 ## 🛠️ Technical Details
 
 Quick Arrows is built using:
-- **Odyc.js** - A lightweight JavaScript game framework
-- Pure JavaScript (ES6+)
-- HTML5 Canvas for rendering
-- Local storage for high score tracking
+- [Odyc.js](https://odyc.dev/) - A lightweight JavaScript game framework
+- Pure JavaScript
 
 ### Project Structure
 
@@ -60,46 +69,25 @@ quick-arrows/
 └── screenshots/        # Game screenshots
 ```
 
-## 🎮 Game Features
+### 🚀 Local Development
 
-- **Progressive Difficulty**: Game becomes more challenging as you improve
-- **High Score Tracking**: Your best score is saved locally
-- **Responsive Design**: Works on both desktop and mobile devices
-- **Visual Timer**: Color-coded timer bar shows remaining time
-- **Clear Instructions**: Built-in tutorial explains all game mechanics
+1. Clone this repository
+2. Start HTTP server `npx http-server`
+3. Visit `http://localhost:8080`
 
-## 🚀 Running Locally
+## 🖼️ Screenshots
 
-1. Clone the repository
-2. Open `index.html` in a web browser
-3. Start playing!
+| Welcome screen | Menu |
+|------|---------------------|
+| ![Welcome screen](screenshots/welcome.png) | ![Menu](screenshots/menu.png) |
 
-No build process or dependencies required - just open and play!
+| Instructions (1) | Instructions (2) |
+|--------------|------------------|
+| ![Instructions 1](screenshots/instructions1.png) | ![Instructions 2](screenshots/instructions2.png) |
 
-## 📱 Screenshots
-
-The game features a clean, minimalist design with:
-- Dark theme for reduced eye strain
-- Clear, colorful arrows for easy recognition
-- Visual timer indication
-- Score tracking and best score display
-
-## 🏆 Tips for High Scores
-
-1. **Start Slow**: Focus on accuracy over speed initially
-2. **Practice Green Arrows**: These are the most challenging - practice looking ahead
-3. **Stay Calm**: Don't panic when the timer gets faster
-4. **Develop Patterns**: Try to recognize common arrow sequences
-5. **Take Breaks**: Cognitive fatigue can hurt performance
-
-## 🧪 Cognitive Benefits
-
-Quick Arrows helps train several cognitive abilities:
-- **Reaction Time**: Faster response to visual stimuli
-- **Cognitive Flexibility**: Switching between different rule sets
-- **Working Memory**: Remembering rules while processing information
-- **Attention Control**: Maintaining focus under time pressure
-- **Pattern Recognition**: Identifying sequences and relationships
+| Instructions 3 | Instructions 4 |
+|--------------------|------------|
+| ![Instructions 3](screenshots/instructions3.png) | ![Instructions 4](screenshots/instructions4.png) |
 
 ## 📄 License
 

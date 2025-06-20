@@ -36,9 +36,9 @@ class Arrows {
       directions[Math.floor(Math.random() * directions.length)];
 
     let colors =
-      score < 5
+      score < 30
         ? this.EASY_COLORS
-        : score < 10
+        : score < 40
           ? this.MEDIUM_COLORS
           : this.HARD_COLORS;
 
