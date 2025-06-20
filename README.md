@@ -89,6 +89,10 @@ quick-arrows/
 |--------------------|------------|
 | ![Instructions 3](screenshots/instructions3.png) | ![Instructions 4](screenshots/instructions4.png) |
 
+| Game screen |
+|---------------------|
+| ![Game screen](screenshots/game.png) |
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
